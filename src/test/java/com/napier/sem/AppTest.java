@@ -1,12 +1,8 @@
-package com.napier.devops;
+package com.napier.sem;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class AppTest
 {
@@ -23,4 +19,53 @@ public class AppTest
     {
         app.printSalaries(null);
     }
+    @Test
+    void printSalariesTestEmpty()
+    {
+        ArrayList<Employee> employess = new ArrayList<Employee>();
+        app.printSalaries(employess);
+    }
+
+    @Test
+    void printSalariesTestContainsNull()
+    {
+        ArrayList<Employee> employess = new ArrayList<Employee>();
+        employess.add(null);
+        app.printSalaries(employess);
+    }
+
+    @Test
+    void printSalaries()
+    {
+        ArrayList<Employee> employees = new ArrayList<Employee>();
+        Employee emp = new Employee();
+        emp.emp_no = 1;
+        emp.first_name = "Kevin";
+        emp.last_name = "Chalmers";
+        emp.title = "Engineer";
+        emp.salary = 55000;
+        employees.add(emp);
+        app.printSalaries(employees);
+    }
+
+    @Test
+    void displayEmployeeTestNull()
+    {
+        app.displayEmployee(null);
+    }
+
+    @Test
+    void displayEmployeeTest()
+    {
+        Employee emp = new Employee();
+
+        emp.emp_no = 10001;
+        emp.first_name = "John";
+        emp.last_name = "Smith";
+
+        app.displayEmployee(emp);
+    }
+
+
+
 }
